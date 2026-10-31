@@ -163,7 +163,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .quiz{max-width:560px;margin:40px auto 0;text-align:left;background:rgba(14,27,51,.85);border:1px solid rgba(143,192,255,.22);border-radius:24px;padding:24px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .q-top{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--dim);font-family:var(--f-d);font-weight:500;white-space:nowrap}
 .q-bar{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
-.q-bar i{display:block;height:100%;width:14%;background:var(--blue);border-radius:4px;transition:width .4s ease}
+.q-bar i{display:block;height:100%;width:33%;background:var(--blue);border-radius:4px;transition:width .4s ease}
 .q{border:0;margin:0;padding:0;display:none;gap:10px;min-width:0}
 .q.on{display:grid;animation:qin .35s ease both}
 @keyframes qin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
@@ -307,52 +307,28 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="wrap">
       <span class="pill">Analicemos tu tienda</span>
       <h2>Tu marca<br><span class="out">es la próxima.</span></h2>
-      <p class="sub">Contestá 6 preguntas rápidas y te escribo con un análisis para tu tienda.</p>
+      <p class="sub">3 preguntas y me llega tu consulta por WhatsApp.</p>
     </div>
     <div class="wrap">
       <form class="quiz" id="quiz" novalidate>
-        <div class="q-top"><span id="qStep">1 de 7</span><div class="q-bar"><i id="qBar"></i></div></div>
+        <div class="q-top"><span id="qStep">1 de 3</span><div class="q-bar"><i id="qBar"></i></div></div>
         <div class="q-steps" id="qSteps">
-          <fieldset class="q on" data-q="plataforma"><legend>¿Dónde está tu tienda hoy?</legend>
-            <button type="button" data-v="Tiendanube, ya vendo" data-p="2">Tiendanube, ya vendo</button>
-            <button type="button" data-v="Tiendanube, recién arranco" data-p="1">Tiendanube, recién arranco</button>
-            <button type="button" data-v="Otra plataforma" data-p="1">Otra plataforma</button>
+          <fieldset class="q on" data-q="tienda"><legend>¿Tu tienda está en Tiendanube?</legend>
+            <button type="button" data-v="Sí, y ya vendo" data-p="2">Sí, y ya vendo</button>
+            <button type="button" data-v="Sí, recién arranco" data-p="1">Sí, recién arranco</button>
+            <button type="button" data-v="Estoy en otra plataforma" data-p="1">Estoy en otra plataforma</button>
             <button type="button" data-v="Todavía no tengo tienda" data-p="0">Todavía no tengo tienda</button>
           </fieldset>
-          <fieldset class="q" data-q="ventas"><legend>¿Cuánto vende tu tienda por mes?</legend>
-            <button type="button" data-v="Más de $5.000.000" data-p="3">Más de $5.000.000</button>
-            <button type="button" data-v="Entre $1.000.000 y $5.000.000" data-p="2">Entre $1.000.000 y $5.000.000</button>
-            <button type="button" data-v="Menos de $1.000.000" data-p="1">Menos de $1.000.000</button>
-            <button type="button" data-v="Todavía no vendo" data-p="0">Todavía no vendo</button>
-          </fieldset>
-          <fieldset class="q" data-q="publicidad"><legend>¿Invertís en publicidad?</legend>
-            <button type="button" data-v="Sí, todos los meses" data-p="2">Sí, todos los meses</button>
-            <button type="button" data-v="A veces" data-p="1">A veces</button>
-            <button type="button" data-v="No" data-p="0">No</button>
-          </fieldset>
-          <fieldset class="q" data-q="necesito"><legend>¿Qué necesitás?</legend>
-            <button type="button" data-v="Rediseño completo" data-p="2">Rediseño completo</button>
-            <button type="button" data-v="Tienda desde cero" data-p="2">Tienda desde cero</button>
-            <button type="button" data-v="Mejorar algunas partes" data-p="1">Mejorar algunas partes</button>
-            <button type="button" data-v="No sé, quiero que me asesores" data-p="1">No sé, quiero que me asesores</button>
-          </fieldset>
-          <fieldset class="q" data-q="inversion"><legend>¿Cuánto pensás invertir en tu tienda?</legend>
-            <button type="button" data-v="Más de $400.000" data-p="3">Más de $400.000</button>
-            <button type="button" data-v="Entre $250.000 y $400.000" data-p="2">Entre $250.000 y $400.000</button>
-            <button type="button" data-v="Menos de $250.000" data-p="0">Menos de $250.000</button>
+          <fieldset class="q" data-q="objetivo"><legend>¿Qué querés lograr?</legend>
+            <button type="button" data-v="Que se vea como una marca profesional" data-p="2">Que se vea como una marca profesional</button>
+            <button type="button" data-v="Vender más con lo que ya tengo" data-p="2">Vender más con lo que ya tengo</button>
+            <button type="button" data-v="Empezar a vender online" data-p="1">Empezar a vender online</button>
+            <button type="button" data-v="Arreglar algo puntual" data-p="0">Arreglar algo puntual</button>
           </fieldset>
           <fieldset class="q" data-q="cuando"><legend>¿Cuándo querés arrancar?</legend>
-            <button type="button" data-v="Ya mismo" data-p="2">Ya mismo</button>
+            <button type="button" data-v="Esta semana" data-p="2">Esta semana</button>
             <button type="button" data-v="Este mes" data-p="1">Este mes</button>
-            <button type="button" data-v="Más adelante" data-p="0">Más adelante</button>
-          </fieldset>
-          <fieldset class="q" data-q="datos"><legend>Último paso</legend>
-            <label for="fNombre">Tu nombre</label>
-            <input id="fNombre" autocomplete="given-name" placeholder="Ej.: Sofía">
-            <label for="fWeb">Tu tienda o Instagram</label>
-            <input id="fWeb" autocomplete="url" placeholder="Ej.: mitienda.com.ar o @mitienda">
-            <p class="q-err" id="qErr" hidden>Completá tu nombre y tu tienda para seguir.</p>
-            <button type="submit" class="btn" data-lead><svg><use href="#wa"/></svg>Enviar por WhatsApp</button>
+            <button type="button" data-v="Sin apuro" data-p="0">Sin apuro</button>
           </fieldset>
         </div>
         <button type="button" class="q-back" id="qBack" hidden>← Volver</button>
@@ -470,11 +446,8 @@ var SITES={"damelo": {"n": "Dámelo Siempre", "r": "Indumentaria", "u": "https:/
 // Formulario que califica: suma puntos y manda todo por WhatsApp con un código de solicitud.
 // A = súper potable · B = potable · C = bajo recurso (la persona ve solo «Solicitud A-1234»).
 function calificar(r){
-  var pts=0; for(var k in r){ if(r[k]&&typeof r[k].p==='number') pts+=r[k].p }
-  var inv=r.inversion?r.inversion.p:0;
-  if(inv===0 || pts<=5) return {cod:'C',pts:pts};
-  if(inv>=2 && pts>=10) return {cod:'A',pts:pts};
-  return {cod:'B',pts:pts};
+  var pts=0; for(var k in r){ if(r[k]) pts+=r[k].p }
+  return {cod: pts>=5?'A':(pts<=2?'C':'B'), pts:pts};
 }
 (function(){
   var form=document.getElementById('quiz'); if(!form) return;
@@ -483,32 +456,29 @@ function calificar(r){
   function show(n){
     steps.forEach(function(s,x){s.classList.toggle('on',x===n)}); i=n;
     bar.style.width=((n+1)/steps.length*100)+'%'; lab.textContent=(n+1)+' de '+steps.length; back.hidden=n===0;
-    if(n===steps.length-1){var f=document.getElementById('fNombre'); if(matchMedia('(hover:hover)').matches) f.focus()}
+  }
+  function enviar(){
+    var c=calificar(R), id=c.cod+'-'+String(Date.now()).slice(-4);
+    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tiendanube: '+R.tienda.v+'\n• Quiero: '+R.objetivo.v+'\n• Arranco: '+R.cuando.v+'\n\nSolicitud '+id;
+    try{var g=JSON.parse(localStorage.getItem('praxis_ref')||'null'); if(g&&g.r) t+='\n(ref: '+g.r+')'}catch(e){}
+    t+='\n\nMi tienda es: ';
+    if(window.fbq) fbq('track','Lead',{content_category:c.cod});
+    var u='https://wa.me/5493518693997?text='+encodeURIComponent(t);
+    if(!window.open(u,'_blank')) location.href=u;
+    lab.textContent='¡Listo!'; 
   }
   steps.forEach(function(s,x){
     s.querySelectorAll('button[data-v]').forEach(function(b){
       b.addEventListener('click',function(){
         s.querySelectorAll('button[data-v]').forEach(function(o){o.classList.remove('sel')}); b.classList.add('sel');
         R[s.dataset.q]={v:b.dataset.v,p:+b.dataset.p};
+        if(x===steps.length-1){ enviar(); return }
         setTimeout(function(){show(x+1)},220);
       });
     });
   });
   back.addEventListener('click',function(){if(i>0)show(i-1)});
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var n=document.getElementById('fNombre').value.trim(), w=document.getElementById('fWeb').value.trim(), err=document.getElementById('qErr');
-    if(!n||!w){err.hidden=false;return} err.hidden=true;
-    var c=calificar(R), id=c.cod+'-'+String(Date.now()).slice(-4);
-    var L={plataforma:'Tienda',ventas:'Ventas por mes',publicidad:'Publicidad',necesito:'Necesito',inversion:'Inversión',cuando:'Arranque'};
-    var t='Hola Mateo, soy '+n+'. Quiero que analices mi tienda: '+w+'\n';
-    for(var k in L){ if(R[k]) t+='\n• '+L[k]+': '+R[k].v }
-    t+='\n\nSolicitud '+id;
-    try{var g=JSON.parse(localStorage.getItem('praxis_ref')||'null'); if(g&&g.r) t+='\n(ref: '+g.r+')'}catch(e){}
-    if(window.fbq) fbq('track','Lead',{content_category:c.cod});
-    var u='https://wa.me/5493518693997?text='+encodeURIComponent(t);
-    if(!window.open(u,'_blank')) location.href=u;
-  });
+  form.addEventListener('submit',function(e){e.preventDefault()});
 })();
 // Al pasar a producción: píxel 932436575855493 (PageView + Lead en [data-lead]). En la vista previa queda apagado para no ensuciar los datos de los anuncios.
 </script>
