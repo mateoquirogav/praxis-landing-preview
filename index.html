@@ -170,7 +170,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 @keyframes qin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
 .q legend{font-family:var(--f-d);font-weight:700;font-size:clamp(21px,3.4vw,26px);line-height:1.2;padding:0;margin:22px 0 14px;letter-spacing:-.01em}
 .q button[data-v]{text-align:left;font-size:16px;font-weight:500;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);transition:background .2s,border-color .2s}
-.q button[data-v]:hover{border-color:rgba(143,192,255,.5);background:rgba(47,134,255,.1)}
+@media (hover:hover){.q button[data-v]:hover{border-color:rgba(143,192,255,.5);background:rgba(47,134,255,.1)}}
 .q button[data-v].sel{border-color:var(--blue);background:rgba(47,134,255,.2)}
 .q label{font-size:13px;color:var(--dim);margin-top:4px}
 .q input{font:inherit;font-size:16px;color:#fff;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:14px 16px;width:100%}
@@ -314,22 +314,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <form class="quiz" id="quiz" novalidate>
         <div class="q-top"><span id="qStep">1 de 3</span><div class="q-bar"><i id="qBar"></i></div></div>
         <div class="q-steps" id="qSteps">
-          <fieldset class="q on" data-q="tienda"><legend>¿Tu tienda está en Tiendanube?</legend>
-            <button type="button" data-v="Sí, y ya vendo" data-p="2">Sí, y ya vendo</button>
-            <button type="button" data-v="Sí, recién arranco" data-p="1">Sí, recién arranco</button>
-            <button type="button" data-v="Estoy en otra plataforma" data-p="1">Estoy en otra plataforma</button>
-            <button type="button" data-v="Todavía no tengo tienda" data-p="0">Todavía no tengo tienda</button>
+          <fieldset class="q on" data-q="tengo"><legend>¿Qué tenés hoy?</legend>
+            <button type="button" data-v="Local y web" data-p="2">Tengo local y web</button>
+            <button type="button" data-v="Solo web" data-p="1">Solo web</button>
+            <button type="button" data-v="Todavía no tengo" data-p="0">Todavía no tengo</button>
           </fieldset>
-          <fieldset class="q" data-q="objetivo"><legend>¿Qué querés lograr?</legend>
-            <button type="button" data-v="Que se vea como una marca profesional" data-p="2">Que se vea como una marca profesional</button>
-            <button type="button" data-v="Vender más con lo que ya tengo" data-p="2">Vender más con lo que ya tengo</button>
-            <button type="button" data-v="Empezar a vender online" data-p="1">Empezar a vender online</button>
-            <button type="button" data-v="Arreglar algo puntual" data-p="0">Arreglar algo puntual</button>
+          <fieldset class="q" data-q="ventas"><legend>¿Cómo vienen las ventas?</legend>
+            <button type="button" data-v="Vendo bastante" data-p="2">Vendo bastante</button>
+            <button type="button" data-v="Vendo" data-p="1">Vendo</button>
+            <button type="button" data-v="Todavía no vendo" data-p="0">Todavía no vendo</button>
           </fieldset>
-          <fieldset class="q" data-q="cuando"><legend>¿Cuándo querés arrancar?</legend>
-            <button type="button" data-v="Esta semana" data-p="2">Esta semana</button>
-            <button type="button" data-v="Este mes" data-p="1">Este mes</button>
-            <button type="button" data-v="Sin apuro" data-p="0">Sin apuro</button>
+          <fieldset class="q" data-q="busco"><legend>¿Qué buscás?</legend>
+            <button type="button" data-v="Reestructurar todo" data-p="2">Reestructurar todo</button>
+            <button type="button" data-v="Lo básico" data-p="1">Lo básico</button>
+            <button type="button" data-v="Escuchar la propuesta" data-p="1">Escuchar la propuesta</button>
           </fieldset>
         </div>
         <button type="button" class="q-back" id="qBack" hidden>← Volver</button>
@@ -460,7 +458,7 @@ function calificar(r){
   }
   function enviar(){
     var c=calificar(R), id=c.cod+'-'+String(Date.now()).slice(-4);
-    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tiendanube: '+R.tienda.v+'\n• Quiero: '+R.objetivo.v+'\n• Arranco: '+R.cuando.v+'\n\nSolicitud '+id;
+    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tengo: '+R.tengo.v+'\n• Ventas: '+R.ventas.v+'\n• Busco: '+R.busco.v+'\n\nSolicitud '+id;
     try{var g=JSON.parse(localStorage.getItem('praxis_ref')||'null'); if(g&&g.r) t+='\n(ref: '+g.r+')'}catch(e){}
     t+='\n\nMi tienda es: ';
     if(window.fbq) fbq('track','Lead',{content_category:c.cod});
