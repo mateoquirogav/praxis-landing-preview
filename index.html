@@ -317,17 +317,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <fieldset class="q on" data-q="tengo"><legend>¿Qué tenés hoy?</legend>
             <button type="button" data-v="Local y web" data-p="2">Tengo local y web</button>
             <button type="button" data-v="Solo web" data-p="1">Solo web</button>
-            <button type="button" data-v="Todavía no tengo" data-p="0">Todavía no tengo</button>
+            <button type="button" data-v="Todavía no tengo web" data-p="0">Todavía no tengo web</button>
           </fieldset>
-          <fieldset class="q" data-q="ventas"><legend>¿Cómo vienen las ventas?</legend>
+          <fieldset class="q" data-q="ventas" data-si="web"><legend>¿Cómo vienen las ventas?</legend>
             <button type="button" data-v="Vendo bastante" data-p="2">Vendo bastante</button>
             <button type="button" data-v="Vendo" data-p="1">Vendo</button>
             <button type="button" data-v="Todavía no vendo" data-p="0">Todavía no vendo</button>
           </fieldset>
-          <fieldset class="q" data-q="busco"><legend>¿Qué buscás?</legend>
-            <button type="button" data-v="Reestructurar todo" data-p="2">Reestructurar todo</button>
-            <button type="button" data-v="Lo básico" data-p="1">Lo básico</button>
-            <button type="button" data-v="Escuchar la propuesta" data-p="1">Escuchar la propuesta</button>
+          <fieldset class="q" data-q="ventas" data-si="sinweb"><legend>¿Cómo vendés hoy?</legend>
+            <button type="button" data-v="Vendo en mi local" data-p="2">Vendo en mi local</button>
+            <button type="button" data-v="Vendo por otro medio" data-p="1">Vendo por otro medio</button>
+            <button type="button" data-v="Recién empiezo" data-p="0">Recién empiezo</button>
+          </fieldset>
+          <fieldset class="q" data-q="encaro"><legend>¿Cómo pensás encararlo?</legend>
+            <button type="button" data-v="Quiero invertir y hacerlo bien" data-p="2">Quiero invertir y hacerlo bien</button>
+            <button type="button" data-v="Algo simple para arrancar" data-p="1">Algo simple para arrancar</button>
+            <button type="button" data-v="Por ahora estoy averiguando" data-p="0">Por ahora estoy averiguando</button>
           </fieldset>
         </div>
         <button type="button" class="q-back" id="qBack" hidden>← Volver</button>
@@ -450,15 +455,21 @@ function calificar(r){
 }
 (function(){
   var form=document.getElementById('quiz'); if(!form) return;
-  var steps=[].slice.call(form.querySelectorAll('.q')), i=0, R={};
+  var all=[].slice.call(form.querySelectorAll('.q')), i=0, R={};
   var bar=document.getElementById('qBar'), lab=document.getElementById('qStep'), back=document.getElementById('qBack');
+  // la pregunta 2 cambia si no tiene web
+  function camino(){
+    var sinweb=R.tengo&&R.tengo.p===0;
+    return all.filter(function(s){return !s.dataset.si||s.dataset.si===(sinweb?'sinweb':'web')});
+  }
   function show(n){
-    steps.forEach(function(s,x){s.classList.toggle('on',x===n)}); i=n;
-    bar.style.width=((n+1)/steps.length*100)+'%'; lab.textContent=(n+1)+' de '+steps.length; back.hidden=n===0;
+    var st=camino();
+    all.forEach(function(s){s.classList.toggle('on',s===st[n])}); i=n;
+    bar.style.width=((n+1)/st.length*100)+'%'; lab.textContent=(n+1)+' de '+st.length; back.hidden=n===0;
   }
   function enviar(){
     var c=calificar(R), id=c.cod+'-'+String(Date.now()).slice(-4);
-    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tengo: '+R.tengo.v+'\n• Ventas: '+R.ventas.v+'\n• Busco: '+R.busco.v+'\n\nSolicitud '+id;
+    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tengo: '+R.tengo.v+'\n• Ventas: '+R.ventas.v+'\n• Cómo lo encaro: '+R.encaro.v+'\n\nSolicitud '+id;
     try{var g=JSON.parse(localStorage.getItem('praxis_ref')||'null'); if(g&&g.r) t+='\n(ref: '+g.r+')'}catch(e){}
     t+='\n\nMi tienda es: ';
     if(window.fbq) fbq('track','Lead',{content_category:c.cod});
@@ -466,12 +477,13 @@ function calificar(r){
     if(!window.open(u,'_blank')) location.href=u;
     lab.textContent='¡Listo!'; 
   }
-  steps.forEach(function(s,x){
+  all.forEach(function(s){
     s.querySelectorAll('button[data-v]').forEach(function(b){
       b.addEventListener('click',function(){
         s.querySelectorAll('button[data-v]').forEach(function(o){o.classList.remove('sel')}); b.classList.add('sel');
         R[s.dataset.q]={v:b.dataset.v,p:+b.dataset.p};
-        if(x===steps.length-1){ enviar(); return }
+        var st=camino(), x=st.indexOf(s);
+        if(x===st.length-1){ enviar(); return }
         setTimeout(function(){show(x+1)},220);
       });
     });
