@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Praxis | Diseño a medida para Tiendanube</title>
 <meta name="description" content="Rediseño tu Tiendanube con código, a medida y editable. Mirá las tiendas en movimiento.">
-<meta name="robots" content="noindex">
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap">
@@ -160,6 +159,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .final h2 .out{color:transparent;-webkit-text-stroke:2px rgba(227,238,255,.85);letter-spacing:-.015em}
 .final .sub{margin:24px auto 0;color:#C4D2E6;font-size:clamp(17px,2.2vw,20px);max-width:36ch}
 .final .btn{margin-top:32px}
+/* ¿Tenés web? · 2 botones a WhatsApp */
+.tw-box{max-width:560px;margin:40px auto 0;background:rgba(14,27,51,.85);border:1px solid rgba(143,192,255,.22);border-radius:24px;padding:24px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);scroll-margin-top:90px}
+.tw-q{font-family:var(--f-d);font-weight:700;font-size:clamp(22px,3.4vw,28px);line-height:1.2;margin:4px 0 18px;text-align:center;letter-spacing:-.01em}
+.tw-ops{display:grid;gap:12px}
+.tw-op{display:flex;align-items:center;gap:14px;text-align:left;padding:18px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:#fff;touch-action:manipulation;transition:background .2s,border-color .2s}
+.tw-op svg{width:24px;height:24px;flex:none;color:#25D366}
+.tw-op b{display:block;font-family:var(--f-d);font-weight:600;font-size:17px}
+.tw-op small{display:block;font-size:14px;color:var(--dim);margin-top:3px}
+@media (hover:hover){.tw-op:hover{border-color:#25D366;background:rgba(37,211,102,.1)}}
 /* formulario que califica */
 .quiz{max-width:560px;margin:40px auto 0;text-align:left;background:rgba(14,27,51,.85);border:1px solid rgba(143,192,255,.22);border-radius:24px;padding:24px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .q-top{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--dim);font-family:var(--f-d);font-weight:500;white-space:nowrap}
@@ -218,6 +226,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 }
 @media (prefers-reduced-motion:reduce){.word,.modal,.m-in{transition:none}}
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','932436575855493');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=932436575855493&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -233,7 +252,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <header class="top" id="top">
   <div class="wrap">
     <span class="brand">PRAXIS</span>
-    <a class="wa-round" href="https://wa.me/5493518693997?text=Hola%2C%20siento%20que%20mi%20web%20no%20est%C3%A1%20convirtiendo%20como%20deber%C3%ADa" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp" data-lead><svg><use href="#wa"/></svg></a>
+    <a class="wa-round" href="#tenes-web" data-bajar aria-label="Ir a escribirme por WhatsApp"><svg><use href="#wa"/></svg></a>
   </div>
 </header>
 
@@ -308,35 +327,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="wrap">
       <span class="pill">Analicemos tu tienda</span>
       <h2>Tu marca<br><span class="out">es la próxima.</span></h2>
-      <p class="sub">3 preguntas y me llega tu consulta por WhatsApp.</p>
+      <p class="sub">Elegí tu caso y me llega tu consulta por WhatsApp.</p>
     </div>
     <div class="wrap">
-      <form class="quiz" id="quiz" novalidate>
-        <div class="q-top"><span id="qStep">1 de 3</span><div class="q-bar"><i id="qBar"></i></div></div>
-        <div class="q-steps" id="qSteps">
-          <fieldset class="q on" data-q="tengo"><legend>¿Qué tenés hoy?</legend>
-            <button type="button" data-v="Local y web" data-p="2">Tengo local y web</button>
-            <button type="button" data-v="Solo web" data-p="1">Solo web</button>
-            <button type="button" data-v="Todavía no tengo web" data-p="0">Todavía no tengo web</button>
-          </fieldset>
-          <fieldset class="q" data-q="ventas" data-si="web"><legend>¿Cómo vienen las ventas?</legend>
-            <button type="button" data-v="Vendo bastante" data-p="2">Vendo bastante</button>
-            <button type="button" data-v="Vendo" data-p="1">Vendo</button>
-            <button type="button" data-v="Todavía no vendo" data-p="0">Todavía no vendo</button>
-          </fieldset>
-          <fieldset class="q" data-q="ventas" data-si="sinweb"><legend>¿Cómo vendés hoy?</legend>
-            <button type="button" data-v="Vendo en mi local" data-p="2">Vendo en mi local</button>
-            <button type="button" data-v="Vendo por otro medio" data-p="1">Vendo por otro medio</button>
-            <button type="button" data-v="Recién empiezo" data-p="0">Recién empiezo</button>
-          </fieldset>
-          <fieldset class="q" data-q="encaro"><legend>¿Cómo pensás encararlo?</legend>
-            <button type="button" data-v="Quiero invertir y hacerlo bien" data-p="2">Quiero invertir y hacerlo bien</button>
-            <button type="button" data-v="Algo simple para arrancar" data-p="1">Algo simple para arrancar</button>
-            <button type="button" data-v="Por ahora estoy averiguando" data-p="0">Por ahora estoy averiguando</button>
-          </fieldset>
+      <div class="tw-box" id="tenes-web">
+        <h3 class="tw-q">¿Tenés web?</h3>
+        <div class="tw-ops">
+          <a class="tw-op" href="https://wa.me/5493518693997?text=Hola%2C%20quiero%20tener%20una%20web%20profesional" target="_blank" rel="noopener" data-tw="sin-web"><svg><use href="#wa"/></svg><span><b>Todavía no tengo web</b><small>Quiero tener una web profesional</small></span></a>
+          <a class="tw-op" href="https://wa.me/5493518693997?text=Hola%2C%20quiero%20que%20mi%20web%20se%20vea%20mucho%20m%C3%A1s%20profesional%20y%20algo%20%C3%BAnico" target="_blank" rel="noopener" data-tw="con-web"><svg><use href="#wa"/></svg><span><b>Ya tengo web</b><small>Quiero que se vea mucho más profesional</small></span></a>
         </div>
-        <button type="button" class="q-back" id="qBack" hidden>← Volver</button>
-      </form>
+      </div>
       <p class="btn-note" style="text-align:center">Te respondo personalmente por WhatsApp.</p>
     </div>
   </section>
@@ -344,7 +344,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 <footer><div class="wrap"><span>PRAXIS · MATEO QUIROGA</span><span>DISEÑO A MEDIDA PARA TIENDANUBE</span></div></footer>
 
-<div class="sticky" id="sticky"><a class="btn" href="#quiz"><svg><use href="#wa"/></svg>Quiero que analices mi tienda</a></div>
+<div class="sticky" id="sticky"><a class="btn" href="#tenes-web" data-bajar><svg><use href="#wa"/></svg>Quiero que analices mi tienda</a></div>
 
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Tienda en movimiento">
   <div class="m-bg"><img id="mBg" alt=""></div>
@@ -447,51 +447,15 @@ var SITES={"damelo": {"n": "Dámelo Siempre", "r": "Indumentaria", "u": "https:/
     a.setAttribute('href',u.slice(0,p+5)+encodeURIComponent(decodeURIComponent(u.slice(p+5))+'\n\n(ref: '+ref+')'));
   });
 })();
-// Formulario que califica: suma puntos y manda todo por WhatsApp con un código de solicitud.
-// A = súper potable · B = potable · C = bajo recurso (la persona ve solo «Solicitud A-1234»).
-function calificar(r){
-  var pts=0; for(var k in r){ if(r[k]) pts+=r[k].p }
-  return {cod: pts>=5?'A':(pts<=2?'C':'B'), pts:pts};
-}
-(function(){
-  var form=document.getElementById('quiz'); if(!form) return;
-  var all=[].slice.call(form.querySelectorAll('.q')), i=0, R={};
-  var bar=document.getElementById('qBar'), lab=document.getElementById('qStep'), back=document.getElementById('qBack');
-  // la pregunta 2 cambia si no tiene web
-  function camino(){
-    var sinweb=R.tengo&&R.tengo.p===0;
-    return all.filter(function(s){return !s.dataset.si||s.dataset.si===(sinweb?'sinweb':'web')});
-  }
-  function show(n){
-    var st=camino();
-    all.forEach(function(s){s.classList.toggle('on',s===st[n])}); i=n;
-    bar.style.width=((n+1)/st.length*100)+'%'; lab.textContent=(n+1)+' de '+st.length; back.hidden=n===0;
-  }
-  function enviar(){
-    var c=calificar(R), id=c.cod+'-'+String(Date.now()).slice(-4);
-    var t='Hola Mateo, quiero que analices mi tienda.\n\n• Tengo: '+R.tengo.v+'\n• Ventas: '+R.ventas.v+'\n• Cómo lo encaro: '+R.encaro.v+'\n\nSolicitud '+id;
-    try{var g=JSON.parse(localStorage.getItem('praxis_ref')||'null'); if(g&&g.r) t+='\n(ref: '+g.r+')'}catch(e){}
-    t+='\n\nMi tienda es: ';
-    if(window.fbq) fbq('track','Lead',{content_category:c.cod});
-    var u='https://wa.me/5493518693997?text='+encodeURIComponent(t);
-    if(!window.open(u,'_blank')) location.href=u;
-    lab.textContent='¡Listo!'; 
-  }
-  all.forEach(function(s){
-    s.querySelectorAll('button[data-v]').forEach(function(b){
-      b.addEventListener('click',function(){
-        s.querySelectorAll('button[data-v]').forEach(function(o){o.classList.remove('sel')}); b.classList.add('sel');
-        R[s.dataset.q]={v:b.dataset.v,p:+b.dataset.p};
-        var st=camino(), x=st.indexOf(s);
-        if(x===st.length-1){ enviar(); return }
-        setTimeout(function(){show(x+1)},220);
-      });
-    });
-  });
-  back.addEventListener('click',function(){if(i>0)show(i-1)});
-  form.addEventListener('submit',function(e){e.preventDefault()});
-})();
-// Al pasar a producción: píxel 932436575855493 (PageView + Lead en [data-lead]). En la vista previa queda apagado para no ensuciar los datos de los anuncios.
+// Botón de arriba y barra fija: bajan suave hasta «¿Tenés web?»
+document.querySelectorAll('a[data-bajar]').forEach(function(a){a.addEventListener('click',function(e){
+  var t=document.getElementById('tenes-web'); if(!t) return; e.preventDefault();
+  var y=t.getBoundingClientRect().top+window.pageYOffset-90;
+  var red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:y,behavior:red?'auto':'smooth'});
+})});
+// Los 2 botones de WhatsApp disparan el Lead (el mismo evento que el formulario)
+document.querySelectorAll('a[data-tw]').forEach(function(a){a.addEventListener('click',function(){if(window.fbq)fbq('track','Lead',{content_category:a.dataset.tw})})});
 </script>
 </body>
 </html>
